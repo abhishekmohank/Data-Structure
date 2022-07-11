@@ -149,15 +149,15 @@ Node* BinaryTree::deleteNode(Node* node,int key){
 
 int main() {
 	BinaryTree Tree;
-	Tree.createNode(100);
-	Tree.createNode(20);
-	Tree.createNode(200);
-	Tree.createNode(10);
-	Tree.createNode(30);
-	Tree.createNode(150);
 	Tree.createNode(300);
+	Tree.createNode(10);
+	Tree.createNode(252);
+	Tree.createNode(20);
+	Tree.createNode(42);
+	Tree.createNode(30);
+	Tree.createNode(400);
 	Tree.printNode();
-	Tree.deletion(150);
+	Tree.deletion(300);
 	Tree.deletion(10);
 	Tree.printNode();
 	return 0;
