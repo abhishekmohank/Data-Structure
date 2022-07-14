@@ -7,12 +7,14 @@ class Node{
 	Node* left;
 	Node* right;
 public:
-	Node(){
+	Node()
+	{
 		data = 0;
 		left = NULL;
 		right = NULL;
 	}
-	Node(int val){
+	Node(int val)
+	{
 		data = val;
 		left = NULL;
 		right = NULL;
@@ -20,10 +22,12 @@ public:
 	friend class BinaryTree;
 };
 
-class BinaryTree{
+class BinaryTree
+{
 	Node* root;
 public:
-	BinaryTree(){
+	BinaryTree()
+	{
 		root = NULL;
 	}
 	void createNode(int val);
@@ -37,8 +41,10 @@ public:
 	}
 };
 
-void BinaryTree::postOrder(Node* node){
-	 if (node == NULL){
+void BinaryTree::postOrder(Node* node)
+{
+	 if (node == NULL)
+	 {
 	        return;
 	 }
 	 postOrder(node->left);
@@ -46,8 +52,10 @@ void BinaryTree::postOrder(Node* node){
 	 cout<<node->data<<",";
 }
 
-void BinaryTree::preOrder(Node* node){
-	 if (node == NULL){
+void BinaryTree::preOrder(Node* node)
+{
+	 if (node == NULL)
+	 {
 	        return;
 	 }
 	 cout<<node->data<<",";
@@ -55,8 +63,10 @@ void BinaryTree::preOrder(Node* node){
 	 preOrder(node->right);
 }
 
-void BinaryTree::inOrder(Node* node){
-	 if (node == NULL){
+void BinaryTree::inOrder(Node* node)
+{
+	 if (node == NULL)
+	 {
 	        return;
 	 }
 	 inOrder(node->left);
@@ -64,7 +74,8 @@ void BinaryTree::inOrder(Node* node){
 	 inOrder(node->right);
 }
 
-void BinaryTree::printNode(){
+void BinaryTree::printNode()
+{
 	cout<<"In-Order"<<endl;
 	inOrder(root);
 	cout<<"\nPre-Order"<<endl;
@@ -74,16 +85,20 @@ void BinaryTree::printNode(){
 	cout<<endl;
 }
 
-void BinaryTree::createNode(int val){
+void BinaryTree::createNode(int val)
+{
 	Node* newNode = new Node(val);
-	if (root==NULL){
+	if (root==NULL)
+	{
 		root = newNode;
 		return;
 	}
 	Node* temp = root;
 	while (true){
-		if(val<temp->data){
-			if(temp->left==NULL){
+		if(val<temp->data)
+		{
+			if(temp->left==NULL)
+			{
 				temp->left = newNode;
 				break;
 			}
@@ -92,7 +107,8 @@ void BinaryTree::createNode(int val){
 			}
 		}
 		else {
-			if(temp->right==NULL){
+			if(temp->right==NULL)
+			{
 				temp->right = newNode;
 				break;
 			}
@@ -104,25 +120,31 @@ void BinaryTree::createNode(int val){
 
 }
 
-Node* BinaryTree::deleteNode(Node* node,int key){
-	if (node==NULL){
+Node* BinaryTree::deleteNode(Node* node,int key)
+{
+	if (node==NULL)
+	{
 		return NULL;
 	}
-	else if(key>node->data){
+	else if(key>node->data)
+	{
 		node->right=deleteNode(node->right, key);
 		return node;
 	}
-	else if(key<node->data){
+	else if(key<node->data)
+	{
 		node->left=deleteNode(node->left, key);
 		return node;
 	}
 	else{
-		if (node->left ==NULL){
+		if (node->left ==NULL)
+		{
 			Node* temp = node->right;
 			delete node;
 			return temp;
 		}
-		else if (root->right == NULL){
+		else if (root->right == NULL)
+		{
 			Node* temp = node->left;
 			delete node;
 			return temp;
@@ -130,14 +152,17 @@ Node* BinaryTree::deleteNode(Node* node,int key){
 		else {
 			Node* succParent = node;
 			Node* succ = node->right;
-			while (succ->left != NULL){
+			while (succ->left != NULL)
+			{
 				succParent = succ;
 				succ = succ->left;
 			}
-			if (succParent != node){
+			if (succParent != node)
+			{
 				succParent->left = succ->right;
 			}
-			else{
+			else
+			{
 				succParent->right = succ->right;
 			}
 			node->data = succ->data;
@@ -147,7 +172,8 @@ Node* BinaryTree::deleteNode(Node* node,int key){
 	}
 }
 
-int main() {
+int main() 
+{
 	BinaryTree Tree;
 	Tree.createNode(300);
 	Tree.createNode(10);
@@ -160,5 +186,6 @@ int main() {
 	Tree.deletion(300);
 	Tree.deletion(10);
 	Tree.printNode();
+	
 	return 0;
 }
